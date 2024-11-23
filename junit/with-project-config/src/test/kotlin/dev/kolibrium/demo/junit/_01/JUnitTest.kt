@@ -4,7 +4,6 @@ import dev.kolibrium.demo.junit._01.pages.InventoryPage
 import dev.kolibrium.demo.junit._01.pages.LoginPage
 import dev.kolibrium.junit.Kolibrium
 import io.kotest.matchers.shouldBe
-import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 import org.openqa.selenium.WebDriver
 
