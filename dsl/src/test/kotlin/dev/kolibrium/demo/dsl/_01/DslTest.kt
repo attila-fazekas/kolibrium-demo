@@ -2,9 +2,6 @@ package dev.kolibrium.demo.dsl._01
 
 import dev.kolibrium.dsl.selenium.creation.Arguments.Chrome.incognito
 import dev.kolibrium.dsl.selenium.creation.chromeDriver
-import dev.kolibrium.selenium.className
-import dev.kolibrium.selenium.id
-import dev.kolibrium.selenium.name
 import io.kotest.matchers.shouldBe
 import org.junit.jupiter.api.AfterEach
 import org.junit.jupiter.api.BeforeEach

@@ -11,7 +11,7 @@ enum class LoginPageLocators {
     username,
 
     password,
-    
+
     @Name("login-button")
     loginButton
 }
