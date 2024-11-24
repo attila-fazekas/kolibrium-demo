@@ -27,9 +27,9 @@ class DslTest {
                     }
                 }
             }
+        }.apply {
+            get("https://www.saucedemo.com")
         }
-
-        driver["https://www.saucedemo.com/"]
     }
 
     @AfterEach
