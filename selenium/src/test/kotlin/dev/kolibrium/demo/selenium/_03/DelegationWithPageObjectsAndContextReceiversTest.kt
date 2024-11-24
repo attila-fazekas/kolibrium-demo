@@ -7,13 +7,14 @@ import org.junit.jupiter.api.Test
 import org.openqa.selenium.WebDriver
 import org.openqa.selenium.chrome.ChromeDriver
 
-class DelegatesWithPageObjectsAndContextReceiversTest {
+class DelegationWithPageObjectsAndContextReceiversTest {
     private lateinit var driver: WebDriver
 
     @BeforeEach
     fun setUp() {
-        driver = ChromeDriver()
-        driver["https://www.saucedemo.com/"]
+        driver = ChromeDriver().apply {
+            get("https://www.saucedemo.com")
+        }
     }
 
     @AfterEach

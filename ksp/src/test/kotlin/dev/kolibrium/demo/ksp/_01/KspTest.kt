@@ -14,8 +14,9 @@ class KspTest {
 
     @BeforeEach
     fun setUp() {
-        driver = ChromeDriver()
-        driver["https://www.saucedemo.com/"]
+        driver = ChromeDriver().apply {
+            get("https://www.saucedemo.com")
+        }
     }
 
     @AfterEach
