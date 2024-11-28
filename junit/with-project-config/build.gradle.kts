@@ -11,15 +11,14 @@ version = "1.0-SNAPSHOT"
 
 repositories {
     mavenCentral()
-    mavenLocal()
 }
 
 dependencies {
-    implementation("dev.kolibrium:kolibrium-annotations:0.3.0")
-    implementation("dev.kolibrium:kolibrium-dsl:0.3.0")
-    implementation("dev.kolibrium:kolibrium-junit:0.3.0")
-    implementation("dev.kolibrium:kolibrium-selenium:0.3.0")
-    ksp("dev.kolibrium:kolibrium-ksp:0.3.0")
+    implementation("dev.kolibrium:kolibrium-annotations:0.4.0")
+    implementation("dev.kolibrium:kolibrium-dsl:0.4.0")
+    implementation("dev.kolibrium:kolibrium-junit:0.4.0")
+    implementation("dev.kolibrium:kolibrium-selenium:0.4.0")
+    ksp("dev.kolibrium:kolibrium-ksp:0.4.0")
     ksp("dev.zacsweers.autoservice:auto-service-ksp:1.2.0")
     testImplementation("io.kotest:kotest-assertions-core-jvm:5.9.1")
     testImplementation("org.junit.jupiter:junit-jupiter-api:5.11.3")

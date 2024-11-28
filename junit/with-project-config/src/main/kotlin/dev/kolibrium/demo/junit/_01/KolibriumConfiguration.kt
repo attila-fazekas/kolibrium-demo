@@ -7,10 +7,16 @@ import dev.kolibrium.dsl.selenium.creation.ExperimentalFlags.cookies_without_sam
 import dev.kolibrium.dsl.selenium.creation.ExperimentalFlags.same_site_by_default_cookies
 import dev.kolibrium.dsl.selenium.creation.Switches.enable_automation
 import dev.kolibrium.dsl.selenium.creation.chromeDriver
-import dev.kolibrium.junit.config.AbstractProjectConfiguration
+import dev.kolibrium.junit.configuration.AbstractJUnitProjectConfiguration
+import dev.kolibrium.selenium.Wait
+import dev.kolibrium.selenium.configuration.AbstractSeleniumProjectConfiguration
+import org.openqa.selenium.NoSuchElementException
+import org.openqa.selenium.StaleElementReferenceException
+import kotlin.time.Duration.Companion.milliseconds
+import kotlin.time.Duration.Companion.seconds
 
-@AutoService(AbstractProjectConfiguration::class)
-class KolibriumConfiguration : AbstractProjectConfiguration() {
+@AutoService(AbstractJUnitProjectConfiguration::class)
+object JUnitConfiguration : AbstractJUnitProjectConfiguration() {
     override val baseUrl = "https://www.saucedemo.com"
 
     override val chromeDriver = {
@@ -34,4 +40,14 @@ class KolibriumConfiguration : AbstractProjectConfiguration() {
             }
         }
     }
+}
+
+@AutoService(AbstractSeleniumProjectConfiguration::class)
+object SeleniumConfiguration : AbstractSeleniumProjectConfiguration() {
+    override val wait = Wait(
+        pollingInterval = 200.milliseconds,
+        timeout = 10.seconds,
+        message = "Element could not be found",
+        ignoring = arrayOf(NoSuchElementException::class, StaleElementReferenceException::class),
+    )
 }
