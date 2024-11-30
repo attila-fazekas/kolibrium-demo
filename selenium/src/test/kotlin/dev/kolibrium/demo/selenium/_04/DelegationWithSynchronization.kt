@@ -25,28 +25,7 @@ class DelegationWithSynchronization {
     }
 
     @Test
-    fun testEasyButtons() {
-        with(driver) {
-            val easyButton1 by cssSelector("#easy00")
-            easyButton1.click()
-
-            val easyButton2 by cssSelector("#easy01")
-            easyButton2.click()
-
-            val easyButton3 by cssSelector("#easy02")
-            easyButton3.click()
-
-            val easyButton4 by cssSelector("#easy03")
-            easyButton4.click()
-
-            val easyMessage by id("easybuttonmessage")
-
-            easyMessage.text shouldBe "All Buttons Clicked"
-        }
-    }
-
-    @Test
-    fun testEasyButtons_pageObject() {
+    fun `easy buttons clicked`() {
         with(driver) {
             with(ButtonsPage()) {
                 easyButton1.click()
@@ -60,36 +39,7 @@ class DelegationWithSynchronization {
     }
 
     @Test
-    fun testHardButtons() {
-        with(driver) {
-            val hardButton1 by cssSelector("#button00") {
-                isEnabled
-            }
-            hardButton1.click()
-
-            val hardButton2 by cssSelector("#button01") {
-                isEnabled
-            }
-            hardButton2.click()
-
-            val hardButton3 by cssSelector("#button02") {
-                isEnabled
-            }
-            hardButton3.click()
-
-            val hardButton4 by cssSelector("#button03") {
-                isEnabled
-            }
-            hardButton4.click()
-
-            val hardMessage by id("buttonmessage")
-
-            hardMessage.text shouldBe "All Buttons Clicked"
-        }
-    }
-
-    @Test
-    fun testHardButtons_pageObject() {
+    fun `hard buttons clicked`() {
         with(driver) {
             with(ButtonsPage()) {
                 hardButton1.click()
@@ -101,4 +51,19 @@ class DelegationWithSynchronization {
             }
         }
     }
+}
+
+context(WebDriver)
+class ButtonsPage {
+    val easyButton1 by cssSelector("#easy00")
+    val easyButton2 by cssSelector("#easy01")
+    val easyButton3 by cssSelector("#easy02")
+    val easyButton4 by cssSelector("#easy03")
+    val easyMessage by id("easybuttonmessage")
+
+    val hardButton1 by cssSelector("#button00") { isEnabled }
+    val hardButton2 by cssSelector("#button01") { isEnabled }
+    val hardButton3 by cssSelector("#button02") { isEnabled }
+    val hardButton4 by cssSelector("#button03") { isEnabled }
+    val hardMessage by id("buttonmessage")
 }
