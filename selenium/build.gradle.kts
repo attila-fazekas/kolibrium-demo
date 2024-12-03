@@ -14,7 +14,6 @@ repositories {
 }
 
 dependencies {
-    implementation("dev.kolibrium:kolibrium-dsl:0.4.0")
     implementation("dev.kolibrium:kolibrium-selenium:0.4.0")
     ksp("dev.zacsweers.autoservice:auto-service-ksp:1.2.0")
     testImplementation("io.kotest:kotest-assertions-core-jvm:5.9.1")

@@ -15,6 +15,7 @@ class DslTest {
     fun setUp() {
         driver = chromeDriver {
             driverService {
+                logFile = "chrome.log"
                 appendLog = true
                 readableTimestamp = true
             }
