@@ -10,11 +10,12 @@ version = "1.0-SNAPSHOT"
 
 repositories {
     mavenCentral()
+    mavenLocal()
 }
 
 dependencies {
-    implementation("dev.kolibrium:kolibrium-dsl:0.4.0")
-    implementation("dev.kolibrium:kolibrium-selenium:0.4.0")
+    implementation("dev.kolibrium:kolibrium-dsl:0.5.0-SNAPSHOT")
+    implementation("dev.kolibrium:kolibrium-selenium:0.5.0-SNAPSHOT")
     implementation("io.kotest:kotest-assertions-core-jvm:5.9.1")
     testImplementation("org.assertj:assertj-core:3.26.3")
     testImplementation("org.junit.jupiter:junit-jupiter-api:5.11.3")
