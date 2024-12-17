@@ -9,9 +9,12 @@ import dev.kolibrium.dsl.selenium.creation.Switches.enable_automation
 import dev.kolibrium.dsl.selenium.creation.chromeDriver
 import dev.kolibrium.junit.configuration.AbstractJUnitProjectConfiguration
 import dev.kolibrium.selenium.Wait
+import dev.kolibrium.selenium.Wait.Companion.QUICK
 import dev.kolibrium.selenium.configuration.AbstractSeleniumProjectConfiguration
+import dev.kolibrium.selenium.isClickable
 import org.openqa.selenium.NoSuchElementException
 import org.openqa.selenium.StaleElementReferenceException
+import org.openqa.selenium.WebElement
 import kotlin.time.Duration.Companion.milliseconds
 import kotlin.time.Duration.Companion.seconds
 
@@ -44,10 +47,7 @@ object JUnitConfiguration : AbstractJUnitProjectConfiguration() {
 
 @AutoService(AbstractSeleniumProjectConfiguration::class)
 object SeleniumConfiguration : AbstractSeleniumProjectConfiguration() {
-    override val wait = Wait(
-        pollingInterval = 200.milliseconds,
-        timeout = 10.seconds,
-        message = "Element could not be found",
-        ignoring = arrayOf(NoSuchElementException::class, StaleElementReferenceException::class),
-    )
+    override val elementReadyWhen: (WebElement.() -> Boolean) = { isClickable }
+
+    override val wait = QUICK
 }
