@@ -1,6 +1,6 @@
 package dev.kolibrium.demo.dsl._01
 
-import dev.kolibrium.selenium.className
+import dev.kolibrium.core.selenium.className
 import org.openqa.selenium.WebDriver
 
 context(WebDriver)

@@ -1,6 +1,9 @@
 package dev.kolibrium.demo.junit._01
 
 import com.google.auto.service.AutoService
+import dev.kolibrium.core.selenium.Wait.Companion.QUICK
+import dev.kolibrium.core.selenium.configuration.AbstractSeleniumProjectConfiguration
+import dev.kolibrium.core.selenium.isClickable
 import dev.kolibrium.dsl.selenium.creation.Arguments.Chrome.incognito
 import dev.kolibrium.dsl.selenium.creation.Arguments.Chrome.start_maximized
 import dev.kolibrium.dsl.selenium.creation.ExperimentalFlags.cookies_without_same_site_must_be_secure
@@ -8,12 +11,7 @@ import dev.kolibrium.dsl.selenium.creation.ExperimentalFlags.same_site_by_defaul
 import dev.kolibrium.dsl.selenium.creation.Switches.enable_automation
 import dev.kolibrium.dsl.selenium.creation.chromeDriver
 import dev.kolibrium.junit.configuration.AbstractJUnitProjectConfiguration
-import dev.kolibrium.selenium.Wait
-import dev.kolibrium.selenium.configuration.AbstractSeleniumProjectConfiguration
-import org.openqa.selenium.NoSuchElementException
-import org.openqa.selenium.StaleElementReferenceException
-import kotlin.time.Duration.Companion.milliseconds
-import kotlin.time.Duration.Companion.seconds
+import org.openqa.selenium.WebElement
 
 @AutoService(AbstractJUnitProjectConfiguration::class)
 object JUnitConfiguration : AbstractJUnitProjectConfiguration() {
@@ -44,10 +42,7 @@ object JUnitConfiguration : AbstractJUnitProjectConfiguration() {
 
 @AutoService(AbstractSeleniumProjectConfiguration::class)
 object SeleniumConfiguration : AbstractSeleniumProjectConfiguration() {
-    override val wait = Wait(
-        pollingInterval = 200.milliseconds,
-        timeout = 10.seconds,
-        message = "Element could not be found",
-        ignoring = arrayOf(NoSuchElementException::class, StaleElementReferenceException::class),
-    )
+    override val elementReadyCondition: (WebElement.() -> Boolean) = { isClickable }
+
+    override val waitConfig = QUICK
 }
