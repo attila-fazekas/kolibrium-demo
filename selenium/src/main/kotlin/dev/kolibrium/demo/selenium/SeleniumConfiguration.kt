@@ -1,34 +1,33 @@
 package dev.kolibrium.demo.selenium
 
 import com.google.auto.service.AutoService
-import dev.kolibrium.selenium.Wait.Companion.DEFAULT
-import dev.kolibrium.selenium.configuration.AbstractSeleniumProjectConfiguration
-import dev.kolibrium.selenium.decorators.BorderStyle.DOTTED
-import dev.kolibrium.selenium.decorators.Color.BLUE
-import dev.kolibrium.selenium.decorators.HighlighterDecorator
-import dev.kolibrium.selenium.decorators.SlowMotionDecorator
-import dev.kolibrium.selenium.isClickable
-import org.openqa.selenium.SearchContext
+import dev.kolibrium.common.WebElements
+import dev.kolibrium.core.selenium.Wait.Companion.DEFAULT
+import dev.kolibrium.core.selenium.configuration.AbstractSeleniumProjectConfiguration
+import dev.kolibrium.core.selenium.decorators.BorderStyle.DASHED
+import dev.kolibrium.core.selenium.decorators.Color.GREEN
+import dev.kolibrium.core.selenium.decorators.ElementStateCacheDecorator
+import dev.kolibrium.core.selenium.decorators.HighlighterDecorator
+import dev.kolibrium.core.selenium.decorators.SlowMotionDecorator
+import dev.kolibrium.core.selenium.isClickable
 import org.openqa.selenium.WebElement
 import kotlin.time.Duration.Companion.milliseconds
 import kotlin.time.Duration.Companion.seconds
 
 @AutoService(AbstractSeleniumProjectConfiguration::class)
 object SeleniumConfiguration : AbstractSeleniumProjectConfiguration() {
-    override val elementReadyWhen: (WebElement.() -> Boolean) = { isClickable }
+    override val elementReadyCondition: (WebElement.() -> Boolean) = { isClickable }
+
+    override val elementsReadyCondition: (WebElements.() -> Boolean) = { isClickable }
 
     override val decorators = listOf(
-        { ctx: SearchContext ->
-            HighlighterDecorator
-                .configure(style = DOTTED, color = BLUE, width = 10)
-                .decorate(ctx)
-        },
-        { ctx: SearchContext ->
-            SlowMotionDecorator
-                .configure(wait = 500.milliseconds)
-                .decorate(ctx)
-        }
+        HighlighterDecorator(style = DASHED, color = GREEN, width = 5),
+        SlowMotionDecorator(wait = 500.milliseconds),
+        ElementStateCacheDecorator()
     )
 
-    override var wait = DEFAULT.copy(timeout = 8.seconds)
+    override val waitConfig = DEFAULT.copy(
+        pollingInterval = 250.milliseconds,
+        timeout = 7.seconds,
+    )
 }

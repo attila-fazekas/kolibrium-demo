@@ -1,7 +1,7 @@
 package dev.kolibrium.demo.selenium._02
 
-import dev.kolibrium.selenium.idOrName
-import dev.kolibrium.selenium.name
+import dev.kolibrium.core.selenium.idOrName
+import dev.kolibrium.core.selenium.name
 import org.openqa.selenium.WebDriver
 import org.openqa.selenium.WebElement
 

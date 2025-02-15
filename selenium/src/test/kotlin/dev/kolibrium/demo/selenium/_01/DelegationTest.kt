@@ -1,8 +1,8 @@
 package dev.kolibrium.demo.selenium._01
 
-import dev.kolibrium.selenium.className
-import dev.kolibrium.selenium.id
-import dev.kolibrium.selenium.name
+import dev.kolibrium.core.selenium.className
+import dev.kolibrium.core.selenium.id
+import dev.kolibrium.core.selenium.name
 import io.kotest.matchers.shouldBe
 import org.junit.jupiter.api.AfterEach
 import org.junit.jupiter.api.BeforeEach

@@ -1,6 +1,6 @@
 package dev.kolibrium.demo.selenium._02
 
-import dev.kolibrium.selenium.className
+import dev.kolibrium.core.selenium.className
 import org.openqa.selenium.WebDriver
 
 class InventoryPage(driver: WebDriver) {

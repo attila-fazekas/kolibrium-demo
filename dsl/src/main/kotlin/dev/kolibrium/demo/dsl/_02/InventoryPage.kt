@@ -1,7 +1,7 @@
 package dev.kolibrium.demo.dsl._02
 
+import dev.kolibrium.core.selenium.*
 import dev.kolibrium.dsl.selenium.interactions.cookies
-import dev.kolibrium.selenium.*
 import io.kotest.matchers.collections.shouldBeEmpty
 import io.kotest.matchers.shouldBe
 import org.openqa.selenium.WebDriver
@@ -11,7 +11,7 @@ context(WebDriver)
 class InventoryPage {
     private val shoppingCartBadge by cssSelectors("span[data-test='shopping-cart-badge']", cacheLookup = false)
     private val sortMenu by cssSelector("select[data-test='product-sort-container']")
-    private val products by xPaths("//*[@data-test='inventory-item']")
+    private val products by dataTests("inventory-item")
 
     init {
         cookies {
