@@ -1,0 +1,6 @@
+complexity:
+  LongMethod:
+    active: true
+    threshold: 50
+  TooManyFunctions:
+    thresholdInFiles: 20
